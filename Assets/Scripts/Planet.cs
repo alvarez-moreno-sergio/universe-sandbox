@@ -11,8 +11,7 @@ public class Planet : MonoBehaviour
     {
         body = new Body(mass, density);
         gravityNode = GetComponentInChildren<GravityNode>();
-
-        double surfaceRadius = UniverseConstants.CalculateRadius(body.mass, body.density);
+        transform.localScale = new Vector3((float) body.radius, (float) body.radius, (float) body.radius);
     }
 
     // Update is called once per frame

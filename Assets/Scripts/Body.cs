@@ -9,6 +9,6 @@ public class Body
     public Body(double mass, double density){
         this.mass = mass;
         this.density = density;
-        this.radius = UniverseConstants.CalculateRadius(mass, density);
+        this.radius = UniverseConstants.CalculateBodyRadius(mass, density);
     }
 }

@@ -152,6 +152,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 100
+  density: 100
+  gravityNode: {fileID: 0}
 --- !u!135 &161989066
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -546,7 +548,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 0}
-  radius: 0
 --- !u!135 &714433568
 SphereCollider:
   m_ObjectHideFlags: 0

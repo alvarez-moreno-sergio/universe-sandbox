@@ -12,7 +12,7 @@ public static class UniverseConstants
         double radius = Math.Sqrt(GRAVITATIONAL_CONSTANT * mass / minForce);
         return Utils.Truncate(radius, 5);
     }
-    public static Double CalculateRadius(double mass, double density){
+    public static Double CalculateBodyRadius(double mass, double density){
         double volume = mass / density;
         return Math.Pow((3 * volume) / (4 * Math.PI), 1.0 / 3.0);
     }
