@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GravityNode : MonoBehaviour
 {
-    public Planet planet;
+    public CelestialObject planet;
     void Start()
     {
-        planet = GetComponentInParent<Planet>();
+        planet = GetComponentInParent<CelestialObject>();
         RefreshGravityRadius();
     }
 
@@ -16,7 +16,10 @@ public class GravityNode : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        Rigidbody rb = other.GetComponent<Rigidbody>();
-        if (rb == null) return;
+        CelestialObject co = other.GetComponent<CelestialObject>();
+        if (co == null) return;
+
+        Debug.Log("object enter SOI");
+        co.apply_gravitational_force(planet);
     }
 }
