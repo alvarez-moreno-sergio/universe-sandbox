@@ -3,14 +3,17 @@ using UnityEngine;
 
 public static class UniverseConstants
 {
-    public static double GRAVITATIONAL_CONSTANT = 0.00000000006674f;
+    public static float GRAVITATIONAL_CONSTANT = -9.8f;
 
     public static double CalculateGravitationalForce(double distance, double massA, double massB){
         double force = GRAVITATIONAL_CONSTANT * massA * massB / (distance * distance);
+        force *= ENV_VAR.FORCE_MULTIPLIER;
+        if (Math.Abs(force) < 0.1f) return 0; // Prevent micro-force jittering
+
         return Utils.Truncate(force, ENV_VAR.TRUNCATE_PHYSICS);
     }
-    public static double FindNegligibleGravityDistance(double mass, double minForce = 1e-5){
-        double radius = Math.Sqrt(GRAVITATIONAL_CONSTANT * mass / minForce);
+    public static double FindNegligibleGravityRadius(double mass, double minForce = 1e-1){
+        double radius = Math.Sqrt(Math.Abs(GRAVITATIONAL_CONSTANT) * mass / minForce);
         return Utils.Truncate(radius, ENV_VAR.TRUNCATE_PHYSICS);
     }
     public static Double CalculateBodyRadius(double mass, double density){

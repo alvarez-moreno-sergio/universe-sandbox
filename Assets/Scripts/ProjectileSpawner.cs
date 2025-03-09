@@ -5,7 +5,7 @@ public class ProjectileSpawner : MonoBehaviour
     public GameObject projectilePrefab;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Left mouse click
+        if (Input.GetMouseButtonDown(0))
         {
             SpawnPrefabAtClick();
         }
@@ -13,12 +13,13 @@ public class ProjectileSpawner : MonoBehaviour
 
     void SpawnPrefabAtClick()
     {
-        Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition); // Create a ray from the camera through the mouse position
+        Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit)) // Check if the ray hits something
+        if (Physics.Raycast(ray, out hit))
         {
-            Instantiate(projectilePrefab, hit.point, Quaternion.identity); // Spawn the prefab at the hit position
+            Instantiate(projectilePrefab, hit.point, Quaternion.identity);
+            Debug.Log("Proyectile created.");
         }
     }
 }
